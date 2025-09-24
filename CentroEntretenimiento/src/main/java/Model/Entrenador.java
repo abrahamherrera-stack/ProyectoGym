@@ -5,7 +5,9 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.util.List;
  */
 public class Entrenador extends Empleado{
     private List<PlanEntrenamiento>planes;
-    private List<Cliente>clientes;
+    private Set<Cliente>clientes;
 
     public Entrenador() {
     }
@@ -21,7 +23,7 @@ public class Entrenador extends Empleado{
     public Entrenador(List<PlanEntrenamiento> planes,List<Cliente>clientes, int salario, int antiguedad, String cargo, int identificación, String nombre, String dirección, int telefono) {
         super(salario, antiguedad, cargo, identificación, nombre, dirección, telefono);
         this.planes = planes;
-        this.clientes = new ArrayList<>();
+        this.clientes = new HashSet<>();
     }
 
     public Entrenador(List<PlanEntrenamiento> planes, int identificación, String nombre, String dirección, int telefono) {

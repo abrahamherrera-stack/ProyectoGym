@@ -8,10 +8,10 @@ Control\GestionarProductos.class
 Model\Cliente.class
 Util\Lectura.class
 Model\Servicio.class
-com\mycompany\centroentretenimiento\CentroEntretenimiento.class
 Control\Factura.class
 Control\GestionarServicios.class
 Control\Pago.class
 Model\PlanEntrenamiento.class
+CentroEntretenimiento.class
 Control\GestionarPlan.class
 Model\Persona.class

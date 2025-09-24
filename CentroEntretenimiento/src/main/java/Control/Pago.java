@@ -15,6 +15,4 @@ package Control;
 public interface Pago {
     public void pagoEfectivo();
     public void pagoCheque();
-    
-    
 }
