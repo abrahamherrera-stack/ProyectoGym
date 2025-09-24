@@ -12,11 +12,19 @@ public class Factura implements Pago {
     @Override
     public void pagoEfectivo(){
         System.out.println("Ingrese el valor a pagar: ");
-     
     }
     @Override
     public void pagoCheque(){
         System.out.println("Banco del cheque:");
         System.out.println("Numero: ");
-    }    
-}
+    }
+
+    @Override
+    public void pagoDebito() {
+    }
+
+    @Override
+    public void pagoCredito(){
+        
+    }
+}    

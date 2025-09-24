@@ -13,6 +13,8 @@ package Control;
  * @author Alima
  */
 public interface Pago {
-    public void pagoEfectivo();
+void pagoEfectivo();
     public void pagoCheque();
+    void pagoDebito();
+    void pagoCredito();
 }

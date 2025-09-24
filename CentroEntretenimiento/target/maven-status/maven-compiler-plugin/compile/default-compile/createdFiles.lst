@@ -6,6 +6,7 @@ Control\GestionarEntrenador.class
 Model\Entrenador.class
 Control\GestionarProductos.class
 Model\Cliente.class
+Model\ArqueoCaja.class
 Util\Lectura.class
 Model\Servicio.class
 Control\Factura.class

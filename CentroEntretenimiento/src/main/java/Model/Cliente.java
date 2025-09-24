@@ -5,6 +5,7 @@
 package Model;
 
 import Control.Pago;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class Cliente extends Persona implements Pago {
     private List<PlanEntrenamiento> planes;
     private float saldoPendiente;
     private boolean accesoPermitido;
+    private LocalDate fechaPago;
+    private String metodoPgago;
 
     public Cliente() {
     }
@@ -36,10 +39,28 @@ public class Cliente extends Persona implements Pago {
         this.planes = new ArrayList<>();
         this.saldoPendiente = 90000;
         this.accesoPermitido = false;
+        this.fechaPago = LocalDate.now();
+        this.metodoPgago = "";
     }
 
     public boolean isAccesoPermitido() {
         return accesoPermitido;
+    }
+
+    public LocalDate getFechaPago() {
+        return fechaPago;
+    }
+
+    public String getMetodoPgago() {
+        return metodoPgago;
+    }
+
+    public void setFechaPago(LocalDate fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+
+    public void setMetodoPgago(String metodoPgago) {
+        this.metodoPgago = metodoPgago;
     }
 
     public void setAccesoPermitido(boolean accesoPermitido) {
@@ -134,6 +155,8 @@ public class Cliente extends Persona implements Pago {
     public void pagoEfectivo() {
         if (this.saldoPendiente > 0) {
             this.saldoPendiente = 0;
+            this.metodoPgago = "Efectivo";
+            this.fechaPago = LocalDate.now();
             this.accesoPermitido = true;
             System.out.println("Pago en efectivo realizado correctamente. Ya puede ingresar");
         } else {
@@ -145,8 +168,35 @@ public class Cliente extends Persona implements Pago {
     public void pagoCheque() {
         if (this.saldoPendiente > 0) {
             this.saldoPendiente = 0;
+            this.metodoPgago = "Cheque";
+            this.fechaPago = LocalDate.now();
             this.accesoPermitido = true;
             System.out.println("Pago con cheque realizado correctamente. Ya puede ingresar");
+        } else {
+            System.out.println("No tiene saldo pendiente");
+        }
+    }
+    @Override
+    public void pagoDebito() {
+        if (this.saldoPendiente > 0) {
+            this.saldoPendiente = 0;
+            this.metodoPgago = "Tarjeta debito";
+            this.fechaPago = LocalDate.now();
+            this.accesoPermitido = true;
+            System.out.println("Pago con tarjeta realizado correctamente. Ya puede ingresar");
+        } else {
+            System.out.println("No tiene saldo pendiente");
+        }
+    }
+    
+        @Override
+    public void pagoCredito() {
+        if (this.saldoPendiente > 0) {
+            this.saldoPendiente = 0;
+            this.metodoPgago = "Tarjeta credito";
+            this.fechaPago = LocalDate.now();
+            this.accesoPermitido = true;
+            System.out.println("Pago con tarjeta realizado correctamente. Ya puede ingresar");
         } else {
             System.out.println("No tiene saldo pendiente");
         }

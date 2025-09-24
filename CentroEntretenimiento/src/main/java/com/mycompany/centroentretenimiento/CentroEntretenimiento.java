@@ -2,7 +2,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 import Control.GestionarProductos;
 import Control.GestionarCliente;
 import Control.GestionarEmpleados;
@@ -47,7 +46,8 @@ public class CentroEntretenimiento {
             System.out.println("[6] Crear empleado");
             System.out.println("[7] Consultar planes");
             System.out.println("[8] Realizar pago mensualidad");
-            System.out.println("[9] Salir\n");
+            System.out.println("[9] Hacer liquidación de caja");
+            System.out.println("[10] Salir\n");
             System.out.print("Ingrese opción (1-8): ");
             op = entrada.nextInt();
 
@@ -89,7 +89,6 @@ public class CentroEntretenimiento {
                                 entrenador.asignarCliente(clienteSeleccionado);
                             }
 
-                    
                         } else {
                             System.out.println("Opción inválida.");
                         }
@@ -127,31 +126,41 @@ public class CentroEntretenimiento {
                 case 8:
                     int idPago = lectura.leerInt("Ingrese el id del cliente que quiere realizar el pago: ");
                     Cliente clientePago = gc.buscarCliente(idPago);
-                    if (clientePago != null){
+                    if (clientePago != null) {
                         System.out.println("----- Metodos de pago ------");
                         System.out.println("""
                                            1. Efectivo 
                                            2. Cheque 
+                                           3. Tarjeta debito
+                                           4. Tarjeta credito
                                            """);
                         int metodo = lectura.leerInt("Ingrese el metodo de pago a utilizar: ");
-                        if (metodo ==1){
+                        if (metodo == 1) {
                             clientePago.pagoEfectivo();
-                        }else if(metodo == 2){
+                        } else if (metodo == 2) {
                             clientePago.pagoCheque();
-                        }else{
+                        } else if (metodo == 3){
+                            clientePago.pagoDebito();
+                        }else if(metodo == 4){
+                            clientePago.pagoCredito();
+                        }else {
                             System.out.println("Metodo de pago incorrecto");
                         }
-                    }else{
+                    } else {
                         System.out.println("Cliente no encontrado");
                     }
                     break;
                 case 9:
+                    float base = lectura.leerFloat("Ingrese la base de la caja asignada: ");
+                    gEmpleado.realizarArqueoCaja(base, gc.getClientes());
+                    break;
+                case 10:
                     System.out.println("Saliendo del sistema...");
                     break;
                 default:
                     System.out.println("Valor invalido, ingrese un valor correcto");
             }
-        } while (op != 9);
+        } while (op != 10);
     }
 
     public static void main(String[] args) {
